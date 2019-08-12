@@ -1,12 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import './assets/fonts/simple-line-icons/css/simple-line-icons.css'
+import './assets/fonts/iconsmind/style.css'
+import './assets/fonts/@fortawesome/fontawesome-free/css/all.min.css'
+import './assets/fonts/flaticon2/flaticon.css'
+import './assets/fonts/flaticon/flaticon.css'
+import './assets/fonts/line-awesome/css/line-awesome.css'
+import './assets/css/custom_style.css'
+/*
+color options :
+	 'light.purple'		'dark.purple'
+	 'light.blue'		  'dark.blue'
+	 'light.green'		'dark.green'
+	 'light.orange'		'dark.orange'
+	 'light.red'		  'dark.red'
+*/
+var color = 'light.purple';
+if (localStorage.getItem('themeColor')) {
+  color = localStorage.getItem('themeColor');
+}
 
-ReactDOM.render(<App />, document.getElementById('root'));
+let render = () => {
+  const css = import('./assets/css/sass/themes/gogo.' + color + '.scss').then(x => {
+    const MainApp = require('./App');
+  });
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+};
+render();
